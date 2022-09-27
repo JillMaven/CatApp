@@ -2,7 +2,9 @@ import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useEffect, useState} from "react";
 import RandomCats from "../Cat/RandomCats";
 
-export default function EasyModeComponent() {
+export default function ModeComponent(params) {
+    const {firstRoll, secondRoll, operation} = params.route.params;
+
     const [viewCat, setViewCat] = useState(false);
     const [operationText, setOperationText] = useState("");
     const [number, onChangeNumber] = useState("caca");
@@ -13,12 +15,17 @@ export default function EasyModeComponent() {
     }
 
     let generateOperation = () => {
-        let number1 = getRandomInt(50);
-        let number2 = getRandomInt(50);
+        let number1 = getRandomInt(firstRoll);
+        let number2 = getRandomInt(secondRoll);
 
-        setOperationResult(number1 + number2);
-
-        setOperationText(number1 + " + " + number2 + " = ?")
+        if (operation === 0) {
+            setOperationResult(number1 + number2);
+            setOperationText(number1 + " + " + number2 + " = ?")
+        }
+        if (operation === 1) {
+            setOperationResult(number1 * number2);
+            setOperationText(number1 + " * " + number2 + " = ?")
+        }
     }
 
     useEffect(() => {
