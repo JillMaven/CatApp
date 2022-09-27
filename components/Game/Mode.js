@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import RandomCats from "../Cat/RandomCats";
 
 export default function ModeComponent(params) {
-    const {firstRoll, secondRoll, operation} = params.route.params;
+    const {firstRoll, secondRoll, operation, minRoll} = params.route.params;
 
     const [viewCat, setViewCat] = useState(false);
     const [operationText, setOperationText] = useState("");
@@ -11,7 +11,7 @@ export default function ModeComponent(params) {
     const [operationResult, setOperationResult] = useState(null);
 
     function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
+        return Math.floor((Math.random() * max) + minRoll);
     }
 
     let generateOperation = () => {
