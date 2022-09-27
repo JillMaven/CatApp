@@ -40,7 +40,7 @@ export default function EasyModeComponent() {
                 style={styles.input}
                 onChangeText={onChangeNumber}
                 value={isNaN(number) ? "" : parseInt(number)}
-                placeholder={`Type result here: ${operationResult}`}
+                placeholder={`Type result here:`}
                 keyboardType="numeric"
             />
             <Button
